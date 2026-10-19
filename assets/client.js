@@ -152,14 +152,6 @@ async function activateMedia() {
 }
 activateMedia().catch(() => {});
 
-if (!reduceMotion.matches && 'IntersectionObserver' in window) {
-  document.documentElement.classList.add('reveal-enabled');
-  const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
-  }), { threshold: 0.05 });
-  document.querySelectorAll('.section-head,.aircraft-card,.lifecycle li,.feature-copy,.news-card,.course-feature>div,.service-list>div').forEach(element => { element.classList.add('reveal'); revealObserver.observe(element); });
-}
-
 const search = document.querySelector('#news-search');
 if (search) {
   let category = 'All';
